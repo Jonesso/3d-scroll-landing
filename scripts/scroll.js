@@ -1,12 +1,12 @@
 const zSpacing = -1000;
 let lastPosition = zSpacing / 5;
 const frames = Array.from(document.getElementsByClassName('frame'));
-let zVals = [];
+const zVals = [];
 const scrollSpeed = -5;
 
 window.onscroll = function() {
-    let top = document.documentElement.scrollTop;
-    let delta = lastPosition - top;
+    const top = document.documentElement.scrollTop;
+    const delta = lastPosition - top;
 
     lastPosition = top;
     frames.forEach((frame, i) => {
@@ -20,19 +20,3 @@ window.onscroll = function() {
 }
 
 window.scrollTo(0, 1);
-
-
-let soundButton = document.querySelector('.soundbutton');
-let audio = document.querySelector('.audio');
-
-soundButton.addEventListener('click', e => {
-    soundButton.classList.toggle('paused');
-    audio.paused ? audio.play() : audio.pause();
-});
-
-window.onfocus = () => {
-    soundButton.classList.contains('paused') ? audio.pause() : audio.play();
-};
-window.onblur = () => {
-    audio.pause();
-};
